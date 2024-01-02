@@ -231,5 +231,11 @@ namespace Substrate.Integration.Client
             Log.Information("mnemonic[Sr25519]: {0}", mnemonic);
             return Mnemonic.GetAccountFromMnemonic(mnemonic, derivationPsw, keyType);
         }
+
+        public static Account DeriveAccount(Account baseAccount, string derivation)
+        {
+            var mnemonic = string.Join(" ", Mnemonic.MnemonicFromEntropy(baseAccount.Bytes, Mnemonic.BIP39Wordlist.English));
+            return Mnemonic.GetAccountFromMnemonic(mnemonic, derivation, baseAccount.KeyType);
+        }
     }
 }
