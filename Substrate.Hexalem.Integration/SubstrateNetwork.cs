@@ -386,7 +386,7 @@ namespace Substrate.Integration
         }
 
         /// <summary>
-        ///
+        /// Transfer keep alive
         /// </summary>
         /// <param name="dest"></param>
         /// <param name="value"></param>
@@ -394,9 +394,23 @@ namespace Substrate.Integration
         /// <returns></returns>
         public async Task<string> TransferKeepAliveAsync(AccountId32 dest, BigInteger value, int concurrentTasks, CancellationToken token)
         {
+            return await TransferKeepAliveAsync(Account, dest, value, concurrentTasks, token);
+        }
+
+        /// <summary>
+        /// Transfer keep alive
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="dest"></param>
+        /// <param name="value"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<string> TransferKeepAliveAsync(Account account, AccountId32 dest, BigInteger value, int concurrentTasks, CancellationToken token)
+        {
             var extrinsicType = "BalancesCalls.TransferKeepAlive";
 
-            if (!IsConnected || Account == null)
+            if (!IsConnected || account == null)
             {
                 return null;
             }
@@ -409,7 +423,7 @@ namespace Substrate.Integration
 
             var extrinsic = BalancesCalls.TransferKeepAlive(multiAddress, balance);
 
-            return await GenericExtrinsicAsync(Account, extrinsicType, extrinsic, concurrentTasks, token);
+            return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
         }
 
         /// <summary>
