@@ -17,6 +17,9 @@ using System.Threading.Tasks;
 
 namespace Substrate.Integration
 {
+    /// <summary>
+    /// Substrate network
+    /// </summary>
     public partial class SubstrateNetwork : BaseClient
     {
         #region storage
@@ -45,6 +48,12 @@ namespace Substrate.Integration
             return new GameSharp(gameId, result);
         }
 
+        /// <summary>
+        /// Get board
+        /// </summary>
+        /// <param name="playerAddress"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public async Task<BoardSharp?> GetBoardAsync(string playerAddress, CancellationToken token)
         {
             var key = new AccountId32();
@@ -139,21 +148,23 @@ namespace Substrate.Integration
         }
 
         /// <summary>
-        /// Root delete game
+        /// Root delete game, needs to be called by Sudo.
         /// </summary>
-        /// <param name="account"></param>
-        /// <param name="GameIdBytes"></param>
-        /// <param name="concurrentTasks"></param>
-        /// <param name="token"></param>
+        /// <param name="account">Sudo account</param>
+        /// <param name="GameIdBytes">Game Id</param>
+        /// <param name="concurrentTasks">Concurrant tasks of this type allowed</param>
+        /// <param name="token">Cancellation token</param>
         /// <returns></returns>
-        public async Task<string?> RootDeleteGameAsync(Account account, byte[] GameIdBytes, int concurrentTasks, CancellationToken token)
+        public async Task<string?> SudoRootDeleteGameAsync(Account account, byte[] GameIdBytes, int concurrentTasks, CancellationToken token)
         {
             var extrinsicType = $"Hexalem.RootDeleteGame";
 
             Arr32U8 gameId = new Arr32U8();
             gameId.Create(GameIdBytes.Select(p => new U8(p)).ToArray());
 
-            var extrinsic = HexalemModuleCalls.RootDeleteGame(gameId);
+            var rootDeleteGame = Call.PalletHexalem.HexalemRootDeleteGame(GameIdBytes);
+
+            var extrinsic = SudoCalls.Sudo(rootDeleteGame);
 
             return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
         }

@@ -13,36 +13,85 @@ using System.Linq;
 
 namespace Substrate.Integration.Client
 {
+    /// <summary>
+    /// Extrinsic Info, class that holds all information about an extrinsic
+    /// </summary>
     public class ExtrinsicInfo
     {
+        /// <summary>
+        /// Current blockchain transaction event information
+        /// </summary>
         public TransactionEvent? TransactionEvent { get; private set; }
 
+        /// <summary>
+        /// Extrinsic type
+        /// </summary>
         public string ExtrinsicType { get; }
 
+        /// <summary>
+        ///  Timestamp when the extrinsic was created
+        /// </summary>
         public DateTime Created { get; private set; }
 
+        /// <summary>
+        /// Timestamp when the extrinsic was last updated
+        /// </summary>
         public DateTime LastUpdated { get; private set; }
 
+        /// <summary>
+        /// Transaction hash
+        /// </summary>
         public Hash Hash { get; private set; }
 
+        /// <summary>
+        /// Transaction index
+        /// </summary>
         public uint? Index { get; set; }
 
+        /// <summary>
+        /// Is the extrinsic ready to be broadcasted
+        /// </summary>
         public bool IsReady { get; private set; }
 
+        /// <summary>
+        /// Is the extrinsic in a block
+        /// </summary>
         public bool IsInBlock { get; private set; }
 
+        /// <summary>
+        /// Is the extrinsic successfull
+        /// </summary>
         public bool IsSuccess { get; private set; }
 
+        /// <summary>
+        /// Is the extrinsic completed
+        /// </summary>
         public bool IsCompleted { get; private set; }
 
+        /// <summary>
+        /// Does the extrinsic have events
+        /// </summary>
         public bool HasEvents => EventRecords != null;
 
+        /// <summary>
+        /// Error message
+        /// </summary>
         public string Error { get; set; }
 
+        /// <summary>
+        /// All event records
+        /// </summary>
         public List<EventRecord> EventRecords { get; set; }
 
+        /// <summary>
+        /// Time elapsed since the extrinsic was created
+        /// </summary>
         public double TimeElapsed => DateTime.UtcNow.Subtract(LastUpdated).TotalSeconds;
 
+        /// <summary>
+        /// Extrinsic info constructor
+        /// </summary>
+        /// <param name="extrinsicType"></param>
         public ExtrinsicInfo(string extrinsicType)
         {
             ExtrinsicType = extrinsicType;

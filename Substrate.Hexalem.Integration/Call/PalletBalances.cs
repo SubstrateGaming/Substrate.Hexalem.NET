@@ -12,6 +12,12 @@ namespace Substrate.Integration.Call
     /// </summary>
     public static class PalletBalances
     {
+        /// <summary>
+        /// Balances transfer keep alive call
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public static EnumRuntimeCall BalancesTransferKeepAlive(AccountId32 target, BigInteger amount)
         {
             var baseU128 = new BaseCom<U128>();
@@ -32,6 +38,12 @@ namespace Substrate.Integration.Call
             return enumCall;
         }
 
+        /// <summary>
+        /// Balances transfer call
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public static EnumRuntimeCall BalancesTransfer(AccountId32 target, BigInteger amount)
         {
             var baseU128 = new BaseCom<U128>();

@@ -19,14 +19,23 @@ using System.Threading.Tasks;
 
 namespace Substrate.Integration
 {
+    /// <summary>
+    /// Substrate network
+    /// </summary>
     public partial class SubstrateNetwork : BaseClient
     {
+        /// <summary>
+        /// Decimals
+        /// </summary>
         public const long DECIMALS = 1000000000000;
 
+        /// <summary>
+        /// Account
+        /// </summary>
         public Account Account { get; set; }
 
         /// <summary>
-        ///
+        /// Substrate network constructor
         /// </summary>
         /// <param name="account"></param>
         /// <param name="networkType"></param>
@@ -105,11 +114,8 @@ namespace Substrate.Integration
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
-        /// <param name="client"></param>
         /// <param name="module"></param>
         /// <param name="item"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="subKey"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         public async Task<Dictionary<T1, T2>> GetAllStorageAsync<T1, T2>(string module, string item, CancellationToken token)
@@ -119,6 +125,16 @@ namespace Substrate.Integration
             return await GetAllStorageAsync<T1, T2>(module, item, null, null, token);
         }
 
+        /// <summary>
+        /// Get all storage as dictionary.
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="module"></param>
+        /// <param name="item"></param>
+        /// <param name="subKey"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public async Task<Dictionary<T1, T2>> GetAllStorageAsync<T1, T2>(string module, string item, byte[] subKey, CancellationToken token)
             where T1 : IType, new()
             where T2 : IType, new()
@@ -126,6 +142,16 @@ namespace Substrate.Integration
             return await GetAllStorageAsync<T1, T2>(module, item, null, subKey, token);
         }
 
+        /// <summary>
+        /// Get all storage as dictionary.
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="module"></param>
+        /// <param name="item"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public async Task<Dictionary<T1, T2>> GetAllStorageAsync<T1, T2>(string module, string item, string blockHash, CancellationToken token)
             where T1 : IType, new()
             where T2 : IType, new()
@@ -133,6 +159,17 @@ namespace Substrate.Integration
             return await GetAllStorageAsync<T1, T2>(module, item, blockHash, null, token);
         }
 
+        /// <summary>
+        /// Get all storage as dictionary.
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="module"></param>
+        /// <param name="item"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="subKey"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public async Task<Dictionary<T1, T2>> GetAllStorageAsync<T1, T2>(string module, string item, string blockHash, byte[] subKey, CancellationToken token)
             where T1 : IType, new()
             where T2 : IType, new()
@@ -160,11 +197,10 @@ namespace Substrate.Integration
         }
 
         /// <summary>
-        /// Get all storage
+        /// Get all storage paged.
         /// </summary>
         /// <typeparam name="T1"></typeparam>
         /// <typeparam name="T2"></typeparam>
-        /// <param name="client"></param>
         /// <param name="module"></param>
         /// <param name="item"></param>
         /// <param name="startKey"></param>
@@ -172,7 +208,6 @@ namespace Substrate.Integration
         /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        /// <exception cref="NotSupportedException"></exception>
         public async Task<List<(byte[], T1, T2)>> GetStoragePagedAsync<T1, T2>(string module, string item, byte[] startKey, uint page, string blockHash, CancellationToken token)
             where T1 : IType, new()
             where T2 : IType, new()
@@ -180,6 +215,20 @@ namespace Substrate.Integration
             return await GetStoragePagedAsync<T1, T2>(module, item, startKey, page, blockHash, null, token);
         }
 
+        /// <summary>
+        /// Get all storage paged.
+        /// </summary>
+        /// <typeparam name="T1"></typeparam>
+        /// <typeparam name="T2"></typeparam>
+        /// <param name="module"></param>
+        /// <param name="item"></param>
+        /// <param name="startKey"></param>
+        /// <param name="page"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="subKey"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        /// <exception cref="NotSupportedException"></exception>
         public async Task<List<(byte[], T1, T2)>> GetStoragePagedAsync<T1, T2>(string module, string item, byte[] startKey, uint page, string blockHash, byte[] subKey, CancellationToken token)
             where T1 : IType, new()
             where T2 : IType, new()
@@ -237,8 +286,6 @@ namespace Substrate.Integration
         /// <summary>
         /// Get all storage keys as list.
         /// </summary>
-        /// <typeparam name="T1"></typeparam>
-        /// <typeparam name="T2"></typeparam>
         /// <param name="module"></param>
         /// <param name="item"></param>
         /// <param name="blockHash"></param>
@@ -270,7 +317,7 @@ namespace Substrate.Integration
         }
 
         /// <summary>
-        /// Get all storage keys paged as list.
+        /// Get all storage keys paged.
         /// </summary>
         /// <param name="module"></param>
         /// <param name="item"></param>
@@ -429,8 +476,8 @@ namespace Substrate.Integration
         /// <summary>
         /// Batch all extrinsics in one transaction.
         /// </summary>
-        /// <param name="to"></param>
-        /// <param name="amount"></param>
+        /// <param name="callList"></param>
+        /// <param name="concurrentTasks"></param>
         /// <param name="token"></param>
         /// <returns></returns>
         public async Task<string> BatchAllAsync(List<EnumRuntimeCall> callList, int concurrentTasks, CancellationToken token)

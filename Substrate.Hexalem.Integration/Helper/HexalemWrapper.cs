@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace Substrate.Integration.Helper
 {
+    /// <summary>
+    /// Hexalem Wrapper
+    /// </summary>
     public static class HexalemWrapper
     {
         /// <summary>
@@ -39,6 +42,11 @@ namespace Substrate.Integration.Helper
             return result;
         }
 
+        /// <summary>
+        /// Get the hexa board
+        /// </summary>
+        /// <param name="board"></param>
+        /// <returns></returns>
         public static HexaBoard GetHexaBoard(BoardSharp board)
         {
             return new HexaBoard(board.HexGrid.Select(x => x.Value).ToArray());

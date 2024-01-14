@@ -2,8 +2,15 @@
 
 namespace Substrate.Integration.Model
 {
+    /// <summary>
+    /// Account Info C# Wrapper
+    /// </summary>
     public class AccountInfoSharp
     {
+        /// <summary>
+        /// Account Info Constructor
+        /// </summary>
+        /// <param name="accountInfo"></param>
         public AccountInfoSharp(AccountInfo accountInfo)
         {
             Nonce = accountInfo.Nonce.Value;
@@ -13,10 +20,29 @@ namespace Substrate.Integration.Model
             Data = new AccountDataSharp(accountInfo.Data);
         }
 
+        /// <summary>
+        /// Nonce
+        /// </summary>
         public uint Nonce { get; }
+        
+        /// <summary>
+        /// Consumers
+        /// </summary>
         public uint Consumers { get; }
+        
+        /// <summary>
+        /// Providers
+        /// </summary>
         public uint Providers { get; }
+        
+        /// <summary>
+        /// Sufficients
+        /// </summary>
         public uint Sufficients { get; }
+        
+        /// <summary>
+        /// Data
+        /// </summary>
         public AccountDataSharp Data { get; }
     }
 }

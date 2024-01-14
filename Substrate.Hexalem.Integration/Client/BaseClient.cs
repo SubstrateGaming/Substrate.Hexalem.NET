@@ -18,25 +18,53 @@ using System.Threading.Tasks;
 
 namespace Substrate.Integration.Client
 {
+    /// <summary>
+    /// Base client
+    /// </summary>
     public class BaseClient
     {
         private readonly int _maxConcurrentCalls;
 
         private readonly ChargeType _chargeTypeDefault;
 
-        public static MiniSecret MiniSecretAlice => new MiniSecret(Utils.HexToByteArray("0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a"), ExpandMode.Ed25519);
+        private static MiniSecret MiniSecretAlice => new MiniSecret(Utils.HexToByteArray("0xe5be9a5092b81bca64be81d212e7f2f9eba183bb7a90954f7b76361f6edb5c0a"), ExpandMode.Ed25519);
+        
+        /// <summary>
+        /// Alice account
+        /// </summary>
         public static Account Alice => Account.Build(KeyType.Sr25519, MiniSecretAlice.ExpandToSecret().ToBytes(), MiniSecretAlice.GetPair().Public.Key);
 
+        /// <summary>
+        /// Extrinsic manager, used to manage extrinsic subscriptions and the corresponding states.
+        /// </summary>
         public ExtrinsicManager ExtrinsicManager { get; }
 
+        /// <summary>
+        /// Subscription manager, used to manage subscriptions of storage elements.
+        /// </summary>
         public SubscriptionManager SubscriptionManager { get; }
 
+        /// <summary>
+        /// Substrate Extension Client
+        /// </summary>
         public SubstrateClientExt SubstrateClient { get; }
 
+        /// <summary>
+        /// Is connected to the network
+        /// </summary>
         public bool IsConnected => SubstrateClient.IsConnected;
 
+        /// <summary>
+        /// Network type
+        /// </summary>
         public NetworkType NetworkType { get; set; }
 
+        /// <summary>
+        /// Base Client Constructor
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="networkType"></param>
+        /// <param name="maxConcurrentCalls"></param>
         public BaseClient(string url, NetworkType networkType, int maxConcurrentCalls = 10)
         {
             if (networkType == NetworkType.Host || networkType == NetworkType.Test)
@@ -82,6 +110,10 @@ namespace Substrate.Integration.Client
             return IsConnected;
         }
 
+        /// <summary>
+        /// Disconnect from the network
+        /// </summary>
+        /// <returns></returns>
         public async Task<bool> DisconnectAsync()
         {
             if (!IsConnected)
@@ -93,12 +125,28 @@ namespace Substrate.Integration.Client
             return true;
         }
 
+        /// <summary>
+        /// Check if extrinsic can be sent
+        /// </summary>
+        /// <param name="extrinsicType"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <returns></returns>
         public bool CanExtrinsic(string extrinsicType, int concurrentTasks)
             => IsConnected && !HasMaxConcurentTaskRunning() && !HasToManyConcurentTaskRunning(extrinsicType, concurrentTasks);
 
+        /// <summary>
+        /// Check if we have maximum of concurrent tasks running reached
+        /// </summary>
+        /// <returns></returns>
         public bool HasMaxConcurentTaskRunning()
             => ExtrinsicManager.Running.Count() >= _maxConcurrentCalls;
 
+        /// <summary>
+        /// Check if we have maximum of concurrent tasks running reached
+        /// </summary>
+        /// <param name="extrinsicType"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <returns></returns>
         public bool HasToManyConcurentTaskRunning(string extrinsicType, int concurrentTasks)
             => ExtrinsicManager.Running.Count(p => p.ExtrinsicType == extrinsicType) >= concurrentTasks;
 
@@ -160,7 +208,7 @@ namespace Substrate.Integration.Client
         }
 
         /// <summary>
-        ///
+        /// Callback for extrinsic update
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <param name="extrinsicUpdate"></param>
@@ -222,6 +270,13 @@ namespace Substrate.Integration.Client
             return subscription;
         }
 
+        /// <summary>
+        /// Generate a random account
+        /// </summary>
+        /// <param name="seed"></param>
+        /// <param name="derivationPsw"></param>
+        /// <param name="keyType"></param>
+        /// <returns></returns>
         public static Account RandomAccount(int seed, string derivationPsw = "aA1234dd", KeyType keyType = KeyType.Sr25519)
         {
             var random = new Random(seed);
@@ -232,10 +287,5 @@ namespace Substrate.Integration.Client
             return Mnemonic.GetAccountFromMnemonic(mnemonic, derivationPsw, keyType);
         }
 
-        public static Account DeriveAccount(Account baseAccount, string derivation)
-        {
-            var mnemonic = string.Join(" ", Mnemonic.MnemonicFromEntropy(baseAccount.Bytes, Mnemonic.BIP39Wordlist.English));
-            return Mnemonic.GetAccountFromMnemonic(mnemonic, derivation, baseAccount.KeyType);
-        }
     }
 }

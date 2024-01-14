@@ -8,20 +8,44 @@ using System.Linq;
 
 namespace Substrate.Integration.Client
 {
+    /// <summary>
+    /// Extrinsic Update Event
+    /// </summary>
+    /// <param name="subscriptionId"></param>
+    /// <param name="queueInfo"></param>
     public delegate void ExtrinsicUpdateEvent(string subscriptionId, ExtrinsicInfo queueInfo);
 
+    /// <summary>
+    /// Extrinsic Manager
+    /// </summary>
     public class ExtrinsicManager
     {
+        /// <summary>
+        /// Reteintation time in seconds
+        /// </summary>
         public const int RetentationTimeSec = 60;
 
+        /// <summary>
+        /// Extrinsic Update Event
+        /// </summary>
         public event ExtrinsicUpdateEvent ExtrinsicUpdated;
 
+        /// <summary>
+        /// Running extrinsics
+        /// </summary>
         public IEnumerable<ExtrinsicInfo> Running => _data.Values.Where(p => !p.IsCompleted);
 
+        /// <summary>
+        /// Pre in block extrinsics
+        /// </summary>
         public IEnumerable<ExtrinsicInfo> PreInblock => _data.Values.Where(p => !p.IsInBlock && !p.IsCompleted);
 
         private readonly Dictionary<string, ExtrinsicInfo> _data;
 
+        /// <summary>
+        /// Extrinisic Manager
+        /// </summary>
+        /// <param name="client"></param>
         public ExtrinsicManager(SubstrateClientExt client)
         {
             _data = new Dictionary<string, ExtrinsicInfo>();
@@ -30,7 +54,7 @@ namespace Substrate.Integration.Client
         }
 
         /// <summary>
-        ///
+        /// Add a subscription of a certain extrinsic type
         /// </summary>
         /// <param name="subscription"></param>
         /// <param name="extrinsicType"></param>
@@ -40,7 +64,7 @@ namespace Substrate.Integration.Client
         }
 
         /// <summary>
-        ///
+        /// Get extrinsic info
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -55,6 +79,11 @@ namespace Substrate.Integration.Client
             return queueInfo;
         }
 
+        /// <summary>
+        /// Update extrinsic info
+        /// </summary>
+        /// <param name="subscriptionId"></param>
+        /// <param name="extrinsicUpdate"></param>
         public void UpdateExtrinsicInfo(string subscriptionId, TransactionEventInfo extrinsicUpdate)
         {
             if (!_data.TryGetValue(subscriptionId, out ExtrinsicInfo queueInfo) || queueInfo == null)
@@ -106,7 +135,7 @@ namespace Substrate.Integration.Client
         }
 
         /// <summary>
-        ///
+        /// Update extrinsic events
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <param name="allExtrinsicEvents"></param>
@@ -123,7 +152,7 @@ namespace Substrate.Integration.Client
         }
 
         /// <summary>
-        ///
+        /// Update extrinsic error
         /// </summary>
         /// <param name="subscriptionId"></param>
         /// <param name="errorMsg"></param>
