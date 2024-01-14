@@ -15,23 +15,50 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> TileType
+    /// </summary>
     public enum TileType
     {
         
+        /// <summary>
+        /// >> Empty
+        /// </summary>
         Empty = 0,
         
+        /// <summary>
+        /// >> Home
+        /// </summary>
         Home = 1,
         
+        /// <summary>
+        /// >> Grass
+        /// </summary>
         Grass = 2,
         
+        /// <summary>
+        /// >> Water
+        /// </summary>
         Water = 3,
         
+        /// <summary>
+        /// >> Mountain
+        /// </summary>
         Mountain = 4,
         
+        /// <summary>
+        /// >> Tree
+        /// </summary>
         Tree = 5,
         
+        /// <summary>
+        /// >> Desert
+        /// </summary>
         Desert = 6,
         
+        /// <summary>
+        /// >> Cave
+        /// </summary>
         Cave = 7,
     }
     

@@ -27,42 +27,19 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> place_index
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _placeIndex;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U8 PlaceIndex { get; set; }
         /// <summary>
         /// >> buy_index
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _buyIndex;
+        public Substrate.NetApi.Model.Types.Primitive.U8 BuyIndex { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U8 PlaceIndex
-        {
-            get
-            {
-                return this._placeIndex;
-            }
-            set
-            {
-                this._placeIndex = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U8 BuyIndex
-        {
-            get
-            {
-                return this._buyIndex;
-            }
-            set
-            {
-                this._buyIndex = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "Move";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;

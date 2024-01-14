@@ -15,21 +15,53 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> create_game
+        /// See [`Pallet::create_game`].
+        /// </summary>
         create_game = 0,
         
+        /// <summary>
+        /// >> play
+        /// See [`Pallet::play`].
+        /// </summary>
         play = 1,
         
+        /// <summary>
+        /// >> upgrade
+        /// See [`Pallet::upgrade`].
+        /// </summary>
         upgrade = 2,
         
+        /// <summary>
+        /// >> finish_turn
+        /// See [`Pallet::finish_turn`].
+        /// </summary>
         finish_turn = 3,
         
+        /// <summary>
+        /// >> force_finish_turn
+        /// See [`Pallet::force_finish_turn`].
+        /// </summary>
         force_finish_turn = 4,
         
+        /// <summary>
+        /// >> receive_reward
+        /// See [`Pallet::receive_reward`].
+        /// </summary>
         receive_reward = 5,
         
+        /// <summary>
+        /// >> root_delete_game
+        /// See [`Pallet::root_delete_game`].
+        /// </summary>
         root_delete_game = 6,
     }
     

@@ -15,55 +15,131 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> Error
+    /// The `Error` enum of this pallet.
+    /// </summary>
     public enum Error
     {
         
+        /// <summary>
+        /// >> AlreadyPlaying
+        /// </summary>
         AlreadyPlaying = 0,
         
+        /// <summary>
+        /// >> GameNotInitialized
+        /// </summary>
         GameNotInitialized = 1,
         
+        /// <summary>
+        /// >> HexBoardNotInitialized
+        /// </summary>
         HexBoardNotInitialized = 2,
         
+        /// <summary>
+        /// >> GameAlreadyStarted
+        /// </summary>
         GameAlreadyStarted = 3,
         
+        /// <summary>
+        /// >> GameAlreadyCreated
+        /// </summary>
         GameAlreadyCreated = 4,
         
+        /// <summary>
+        /// >> InternalError
+        /// </summary>
         InternalError = 5,
         
+        /// <summary>
+        /// >> NumberOfPlayersIsTooSmall
+        /// </summary>
         NumberOfPlayersIsTooSmall = 6,
         
+        /// <summary>
+        /// >> NumberOfPlayersIsTooLarge
+        /// </summary>
         NumberOfPlayersIsTooLarge = 7,
         
+        /// <summary>
+        /// >> MathOverflow
+        /// </summary>
         MathOverflow = 8,
         
+        /// <summary>
+        /// >> NotEnoughResources
+        /// </summary>
         NotEnoughResources = 9,
         
+        /// <summary>
+        /// >> NotEnoughPopulation
+        /// </summary>
         NotEnoughPopulation = 10,
         
+        /// <summary>
+        /// >> BuyIndexOutOfBounds
+        /// </summary>
         BuyIndexOutOfBounds = 11,
         
+        /// <summary>
+        /// >> PlaceIndexOutOfBounds
+        /// </summary>
         PlaceIndexOutOfBounds = 12,
         
+        /// <summary>
+        /// >> PlayerNotOnTurn
+        /// </summary>
         PlayerNotOnTurn = 13,
         
+        /// <summary>
+        /// >> PlayerNotInGame
+        /// </summary>
         PlayerNotInGame = 14,
         
+        /// <summary>
+        /// >> CurrentPlayerCannotForceFinishTurn
+        /// </summary>
         CurrentPlayerCannotForceFinishTurn = 15,
         
+        /// <summary>
+        /// >> GameNotPlaying
+        /// </summary>
         GameNotPlaying = 16,
         
+        /// <summary>
+        /// >> BadGridSize
+        /// </summary>
         BadGridSize = 17,
         
+        /// <summary>
+        /// >> TileIsNotEmpty
+        /// </summary>
         TileIsNotEmpty = 18,
         
+        /// <summary>
+        /// >> TileOnMaxLevel
+        /// </summary>
         TileOnMaxLevel = 19,
         
+        /// <summary>
+        /// >> CannotLevelUpEmptyTile
+        /// </summary>
         CannotLevelUpEmptyTile = 20,
         
+        /// <summary>
+        /// >> CannotLevelUp
+        /// </summary>
         CannotLevelUp = 21,
         
+        /// <summary>
+        /// >> TileSurroundedByEmptyTiles
+        /// </summary>
         TileSurroundedByEmptyTiles = 22,
         
+        /// <summary>
+        /// >> BlocksToPlayLimitNotPassed
+        /// </summary>
         BlocksToPlayLimitNotPassed = 23,
     }
     

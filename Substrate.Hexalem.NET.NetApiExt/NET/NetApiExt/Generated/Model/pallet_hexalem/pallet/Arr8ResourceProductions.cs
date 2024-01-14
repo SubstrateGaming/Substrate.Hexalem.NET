@@ -24,8 +24,12 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
     public sealed class Arr8ResourceProductions : BaseType
     {
         
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceProductions[] _value;
+        /// <summary>
+        /// >> Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceProductions[]
+        /// </summary>
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceProductions[] Value { get; set; }
         
+        /// <inheritdoc/>
         public override int TypeSize
         {
             get
@@ -34,23 +38,13 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             }
         }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceProductions[] Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return string.Format("[{0}; {1}]", new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceProductions().TypeName(), this.TypeSize);
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -58,6 +52,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -69,6 +64,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             Value = array;
         }
         
+        /// <inheritdoc/>
         public void Create(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceProductions[] array)
         {
             Value = array;

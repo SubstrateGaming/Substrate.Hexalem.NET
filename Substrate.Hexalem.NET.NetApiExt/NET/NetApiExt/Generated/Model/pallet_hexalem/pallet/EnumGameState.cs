@@ -15,13 +15,25 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> GameState
+    /// </summary>
     public enum GameState
     {
         
+        /// <summary>
+        /// >> Matchmaking
+        /// </summary>
         Matchmaking = 0,
         
+        /// <summary>
+        /// >> Playing
+        /// </summary>
         Playing = 1,
         
+        /// <summary>
+        /// >> Finished
+        /// </summary>
         Finished = 2,
     }
     

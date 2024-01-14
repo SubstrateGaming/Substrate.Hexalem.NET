@@ -15,11 +15,20 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime
 {
     
     
+    /// <summary>
+    /// >> OriginCaller
+    /// </summary>
     public enum OriginCaller
     {
         
+        /// <summary>
+        /// >> system
+        /// </summary>
         system = 0,
         
+        /// <summary>
+        /// >> Void
+        /// </summary>
         Void = 1,
     }
     

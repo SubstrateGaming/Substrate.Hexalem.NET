@@ -15,25 +15,56 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> GameCreated
+        /// </summary>
         GameCreated = 0,
         
+        /// <summary>
+        /// >> MovePlayed
+        /// </summary>
         MovePlayed = 1,
         
+        /// <summary>
+        /// >> TileUpgraded
+        /// </summary>
         TileUpgraded = 2,
         
+        /// <summary>
+        /// >> NewTileSelection
+        /// </summary>
         NewTileSelection = 3,
         
+        /// <summary>
+        /// >> SelectionRefilled
+        /// </summary>
         SelectionRefilled = 4,
         
+        /// <summary>
+        /// >> TurnForceFinished
+        /// </summary>
         TurnForceFinished = 5,
         
+        /// <summary>
+        /// >> NewTurn
+        /// </summary>
         NewTurn = 6,
         
+        /// <summary>
+        /// >> GameFinished
+        /// </summary>
         GameFinished = 7,
         
+        /// <summary>
+        /// >> ExposeEnums
+        /// </summary>
         ExposeEnums = 8,
     }
     

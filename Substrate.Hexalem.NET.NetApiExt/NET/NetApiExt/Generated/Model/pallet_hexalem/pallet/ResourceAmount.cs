@@ -27,42 +27,19 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> resource_type
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumResourceType _resourceType;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumResourceType ResourceType { get; set; }
         /// <summary>
         /// >> amount
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _amount;
+        public Substrate.NetApi.Model.Types.Primitive.U8 Amount { get; set; }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumResourceType ResourceType
-        {
-            get
-            {
-                return this._resourceType;
-            }
-            set
-            {
-                this._resourceType = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U8 Amount
-        {
-            get
-            {
-                return this._amount;
-            }
-            set
-            {
-                this._amount = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "ResourceAmount";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;

@@ -15,21 +15,45 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> ResourceType
+    /// </summary>
     public enum ResourceType
     {
         
+        /// <summary>
+        /// >> Mana
+        /// </summary>
         Mana = 0,
         
+        /// <summary>
+        /// >> Human
+        /// </summary>
         Human = 1,
         
+        /// <summary>
+        /// >> Water
+        /// </summary>
         Water = 2,
         
+        /// <summary>
+        /// >> Food
+        /// </summary>
         Food = 3,
         
+        /// <summary>
+        /// >> Wood
+        /// </summary>
         Wood = 4,
         
+        /// <summary>
+        /// >> Stone
+        /// </summary>
         Stone = 5,
         
+        /// <summary>
+        /// >> Gold
+        /// </summary>
         Gold = 6,
     }
     

@@ -27,42 +27,19 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> tile_to_buy
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile _tileToBuy;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile TileToBuy { get; set; }
         /// <summary>
         /// >> cost
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceAmount _cost;
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceAmount Cost { get; set; }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile TileToBuy
-        {
-            get
-            {
-                return this._tileToBuy;
-            }
-            set
-            {
-                this._tileToBuy = value;
-            }
-        }
-        
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceAmount Cost
-        {
-            get
-            {
-                return this._cost;
-            }
-            set
-            {
-                this._cost = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "TileCost";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;

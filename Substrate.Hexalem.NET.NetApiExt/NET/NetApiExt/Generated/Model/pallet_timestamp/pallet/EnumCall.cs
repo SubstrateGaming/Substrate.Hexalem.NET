@@ -15,9 +15,17 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_timestamp.palle
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> set
+        /// See [`Pallet::set`].
+        /// </summary>
         set = 0,
     }
     

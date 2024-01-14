@@ -15,21 +15,45 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime
 {
     
     
+    /// <summary>
+    /// >> RuntimeCall
+    /// </summary>
     public enum RuntimeCall
     {
         
+        /// <summary>
+        /// >> System
+        /// </summary>
         System = 0,
         
+        /// <summary>
+        /// >> Timestamp
+        /// </summary>
         Timestamp = 2,
         
+        /// <summary>
+        /// >> Sudo
+        /// </summary>
         Sudo = 4,
         
+        /// <summary>
+        /// >> Utility
+        /// </summary>
         Utility = 5,
         
+        /// <summary>
+        /// >> Balances
+        /// </summary>
         Balances = 10,
         
+        /// <summary>
+        /// >> HexalemModule
+        /// </summary>
         HexalemModule = 21,
         
+        /// <summary>
+        /// >> Grandpa
+        /// </summary>
         Grandpa = 101,
     }
     

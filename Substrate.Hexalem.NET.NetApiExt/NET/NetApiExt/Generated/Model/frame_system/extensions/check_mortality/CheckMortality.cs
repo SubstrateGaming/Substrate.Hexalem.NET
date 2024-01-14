@@ -27,25 +27,15 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_system.extension
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra _value;
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value { get; set; }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "CheckMortality";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,6 +43,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_system.extension
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;

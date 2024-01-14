@@ -15,15 +15,35 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_sudo.pallet
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> sudo
+        /// See [`Pallet::sudo`].
+        /// </summary>
         sudo = 0,
         
+        /// <summary>
+        /// >> sudo_unchecked_weight
+        /// See [`Pallet::sudo_unchecked_weight`].
+        /// </summary>
         sudo_unchecked_weight = 1,
         
+        /// <summary>
+        /// >> set_key
+        /// See [`Pallet::set_key`].
+        /// </summary>
         set_key = 2,
         
+        /// <summary>
+        /// >> sudo_as
+        /// See [`Pallet::sudo_as`].
+        /// </summary>
         sudo_as = 3,
     }
     

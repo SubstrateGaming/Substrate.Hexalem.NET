@@ -21,12 +21,18 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
 {
     
     
+    /// <summary>
+    /// >> HexalemModuleStorage
+    /// </summary>
     public sealed class HexalemModuleStorage
     {
         
         // Substrate client for the storage calls.
         private SubstrateClientExt _client;
         
+        /// <summary>
+        /// >> HexalemModuleStorage Constructor
+        /// </summary>
         public HexalemModuleStorage(SubstrateClientExt client)
         {
             this._client = client;
@@ -126,6 +132,9 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
     }
     
+    /// <summary>
+    /// >> HexalemModuleCalls
+    /// </summary>
     public sealed class HexalemModuleCalls
     {
         
@@ -206,6 +215,9 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
     }
     
+    /// <summary>
+    /// >> HexalemModuleConstants
+    /// </summary>
     public sealed class HexalemModuleConstants
     {
         
@@ -363,6 +375,9 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
     }
     
+    /// <summary>
+    /// >> HexalemModuleErrors
+    /// </summary>
     public enum HexalemModuleErrors
     {
         

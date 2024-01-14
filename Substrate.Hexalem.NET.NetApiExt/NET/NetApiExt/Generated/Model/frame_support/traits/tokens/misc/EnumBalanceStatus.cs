@@ -15,11 +15,20 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_support.traits.t
 {
     
     
+    /// <summary>
+    /// >> BalanceStatus
+    /// </summary>
     public enum BalanceStatus
     {
         
+        /// <summary>
+        /// >> Free
+        /// </summary>
         Free = 0,
         
+        /// <summary>
+        /// >> Reserved
+        /// </summary>
         Reserved = 1,
     }
     

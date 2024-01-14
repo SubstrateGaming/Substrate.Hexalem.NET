@@ -27,25 +27,15 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_grandpa.a
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.ed25519.Signature _value;
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.ed25519.Signature Value { get; set; }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.ed25519.Signature Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "Signature";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,6 +43,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_grandpa.a
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;

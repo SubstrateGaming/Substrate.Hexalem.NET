@@ -15,15 +15,30 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
 {
     
     
+    /// <summary>
+    /// >> TilePattern
+    /// </summary>
     public enum TilePattern
     {
         
+        /// <summary>
+        /// >> Normal
+        /// </summary>
         Normal = 0,
         
+        /// <summary>
+        /// >> Delta
+        /// </summary>
         Delta = 1,
         
+        /// <summary>
+        /// >> Line
+        /// </summary>
         Line = 2,
         
+        /// <summary>
+        /// >> Ypsilon
+        /// </summary>
         Ypsilon = 3,
     }
     

@@ -27,127 +27,39 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> state
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumGameState _state;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumGameState State { get; set; }
         /// <summary>
         /// >> player_turn_and_played
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _playerTurnAndPlayed;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U8 PlayerTurnAndPlayed { get; set; }
         /// <summary>
         /// >> last_played_block
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _lastPlayedBlock;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 LastPlayedBlock { get; set; }
         /// <summary>
         /// >> players
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 _players;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 Players { get; set; }
         /// <summary>
         /// >> selection
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1 _selection;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1 Selection { get; set; }
         /// <summary>
         /// >> selection_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _selectionSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U8 SelectionSize { get; set; }
         /// <summary>
         /// >> round
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _round;
+        public Substrate.NetApi.Model.Types.Primitive.U8 Round { get; set; }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumGameState State
-        {
-            get
-            {
-                return this._state;
-            }
-            set
-            {
-                this._state = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U8 PlayerTurnAndPlayed
-        {
-            get
-            {
-                return this._playerTurnAndPlayed;
-            }
-            set
-            {
-                this._playerTurnAndPlayed = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 LastPlayedBlock
-        {
-            get
-            {
-                return this._lastPlayedBlock;
-            }
-            set
-            {
-                this._lastPlayedBlock = value;
-            }
-        }
-        
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 Players
-        {
-            get
-            {
-                return this._players;
-            }
-            set
-            {
-                this._players = value;
-            }
-        }
-        
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1 Selection
-        {
-            get
-            {
-                return this._selection;
-            }
-            set
-            {
-                this._selection = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U8 SelectionSize
-        {
-            get
-            {
-                return this._selectionSize;
-            }
-            set
-            {
-                this._selectionSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U8 Round
-        {
-            get
-            {
-                return this._round;
-            }
-            set
-            {
-                this._round = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "Game";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -161,6 +73,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;

@@ -27,59 +27,23 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> resources
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8 _resources;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8 Resources { get; set; }
         /// <summary>
         /// >> hex_grid
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5 _hexGrid;
-        
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5 HexGrid { get; set; }
         /// <summary>
         /// >> game_id
         /// </summary>
-        private Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 _gameId;
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 GameId { get; set; }
         
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8 Resources
-        {
-            get
-            {
-                return this._resources;
-            }
-            set
-            {
-                this._resources = value;
-            }
-        }
-        
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5 HexGrid
-        {
-            get
-            {
-                return this._hexGrid;
-            }
-            set
-            {
-                this._hexGrid = value;
-            }
-        }
-        
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 GameId
-        {
-            get
-            {
-                return this._gameId;
-            }
-            set
-            {
-                this._gameId = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "HexBoard";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -89,6 +53,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
