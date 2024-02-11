@@ -1,4 +1,4 @@
-﻿using Schnorrkel.Keys;
+﻿using Substrate.NET.Schnorrkel.Keys;
 using Serilog;
 using Substrate.Hexalem.Game;
 using Substrate.Hexalem.Engine;

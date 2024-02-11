@@ -1,4 +1,4 @@
-﻿using Schnorrkel.Keys;
+﻿using Substrate.NET.Schnorrkel.Keys;
 using Substrate.Integration;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi;

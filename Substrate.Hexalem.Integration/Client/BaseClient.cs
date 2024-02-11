@@ -1,4 +1,4 @@
-﻿using Schnorrkel.Keys;
+﻿using Substrate.NET.Schnorrkel.Keys;
 using Serilog;
 using StreamJsonRpc;
 using Substrate.Hexalem.NET.NetApiExt.Generated;
@@ -32,7 +32,7 @@ namespace Substrate.Integration.Client
         /// <summary>
         /// Alice account
         /// </summary>
-        public static Account Alice => Account.Build(KeyType.Sr25519, MiniSecretAlice.ExpandToSecret().ToBytes(), MiniSecretAlice.GetPair().Public.Key);
+        public static Account Alice => Account.Build(KeyType.Sr25519, MiniSecretAlice.ExpandToSecret().ToEd25519Bytes(), MiniSecretAlice.GetPair().Public.Key);
 
         /// <summary>
         /// Extrinsic manager, used to manage extrinsic subscriptions and the corresponding states.
