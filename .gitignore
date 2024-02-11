@@ -362,3 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /Ajuna.AAA.Season2.Bot/config.yml
+/Substrate.Hexalem.Automation/config.yml
