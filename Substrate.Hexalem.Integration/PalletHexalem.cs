@@ -41,7 +41,7 @@ namespace Substrate.Integration
             var key = new Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8();
             key.Create(gameId);
 
-            var result = await SubstrateClient.HexalemModuleStorage.GameStorage(key, token);
+            var result = await SubstrateClient.HexalemModuleStorage.GameStorage(key, null, token);
 
             if (result == null) return null;
 
@@ -59,7 +59,7 @@ namespace Substrate.Integration
             var key = new AccountId32();
             key.Create(Utils.GetPublicKeyFrom(playerAddress));
 
-            var result = await SubstrateClient.HexalemModuleStorage.HexBoardStorage(key, token);
+            var result = await SubstrateClient.HexalemModuleStorage.HexBoardStorage(key, null, token);
 
             if (result == null) return null;
 

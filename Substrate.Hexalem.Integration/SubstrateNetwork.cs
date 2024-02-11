@@ -59,7 +59,7 @@ namespace Substrate.Integration
                 Log.Warning("Currently not connected to the network!");
                 return null;
             }
-            var result = await SubstrateClient.SystemStorage.Number(token);
+            var result = await SubstrateClient.SystemStorage.Number(null, token);
             if (result == null)
             {
                 return null;
@@ -96,7 +96,7 @@ namespace Substrate.Integration
                 return null;
             }
 
-            var result = await SubstrateClient.SystemStorage.Account(key.ToAccountId32(), token);
+            var result = await SubstrateClient.SystemStorage.Account(key.ToAccountId32(), null, token);
             if (result == null)
             {
                 return null;

@@ -66,10 +66,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> GameStorage
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game> GameStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 key, CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game> GameStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 key, string blockhash, CancellationToken token)
         {
             string parameters = HexalemModuleStorage.GameStorageParams(key);
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game>(parameters, blockhash, token);
             return result;
         }
         
@@ -95,10 +95,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> HexBoardStorage
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard> HexBoardStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard> HexBoardStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = HexalemModuleStorage.HexBoardStorageParams(key);
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard>(parameters, blockhash, token);
             return result;
         }
         
@@ -124,10 +124,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> TargetGoalStorage
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8> TargetGoalStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8> TargetGoalStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = HexalemModuleStorage.TargetGoalStorageParams(key);
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8>(parameters, blockhash, token);
             return result;
         }
     }
