@@ -11,41 +11,35 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_matchmaker.pallet
 {
     
     
     /// <summary>
-    /// >> TilePattern
+    /// >> Event
+    /// The `Event` enum of this pallet
     /// </summary>
-    public enum TilePattern
+    public enum Event
     {
         
         /// <summary>
-        /// >> Normal
+        /// >> Queued
+        /// Queued event
         /// </summary>
-        Normal = 0,
+        Queued = 0,
         
         /// <summary>
-        /// >> Delta
+        /// >> Popped
+        /// Popped event
         /// </summary>
-        Delta = 1,
-        
-        /// <summary>
-        /// >> Line
-        /// </summary>
-        Line = 2,
-        
-        /// <summary>
-        /// >> Ypsilon
-        /// </summary>
-        Ypsilon = 3,
+        Popped = 1,
     }
     
     /// <summary>
-    /// >> 43 - Variant[pallet_hexalem.pallet.TilePattern]
+    /// >> 49 - Variant[pallet_matchmaker.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumTilePattern : BaseEnum<TilePattern>
+    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>
     {
     }
 }

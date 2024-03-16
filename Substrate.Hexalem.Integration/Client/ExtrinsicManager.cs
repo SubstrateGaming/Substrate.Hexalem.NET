@@ -3,6 +3,7 @@ using Substrate.Hexalem.NET.NetApiExt.Generated;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_system;
 using Substrate.NetApi.Model.Rpc;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,7 +41,7 @@ namespace Substrate.Integration.Client
         /// </summary>
         public IEnumerable<ExtrinsicInfo> PreInblock => _data.Values.Where(p => !p.IsInBlock && !p.IsCompleted);
 
-        private readonly Dictionary<string, ExtrinsicInfo> _data;
+        private readonly ConcurrentDictionary<string, ExtrinsicInfo> _data;
 
         /// <summary>
         /// Extrinisic Manager
@@ -48,7 +49,7 @@ namespace Substrate.Integration.Client
         /// <param name="client"></param>
         public ExtrinsicManager(SubstrateClientExt client)
         {
-            _data = new Dictionary<string, ExtrinsicInfo>();
+            _data = new ConcurrentDictionary<string, ExtrinsicInfo>();
 
             ExtrinsicUpdated += OnExtrinsicUpdated;
         }
@@ -60,7 +61,7 @@ namespace Substrate.Integration.Client
         /// <param name="extrinsicType"></param>
         public void Add(string subscription, string extrinsicType)
         {
-            _data.Add(subscription, new ExtrinsicInfo(extrinsicType));
+            _data.TryAdd(subscription, new ExtrinsicInfo(extrinsicType));
         }
 
         /// <summary>
@@ -125,12 +126,12 @@ namespace Substrate.Integration.Client
                 Log.Debug("Extrinsic {id} completed with {state}", subscriptionId, queueInfo.TransactionEvent);
             }
 
-            var removeKeys = _data.Where(p => p.Value.TimeElapsed > RetentationTimeSec && p.Value.IsCompleted).Select(p => p.Key)
-                      .ToList(); // ToList materializes the query here
-            Log.Debug("Remove {count} completed extrinsics, after {time}", removeKeys.Count(), RetentationTimeSec);
+            var removeKeys = _data.Where(p => p.Value.TimeElapsed > RetentationTimeSec && p.Value.IsCompleted)
+                              .Select(p => p.Key).ToList(); // Materialize the list of keys to remove
+            Log.Debug("Remove {count} completed extrinsics, after {time}", removeKeys.Count, RetentationTimeSec);
             foreach (var key in removeKeys)
             {
-                _data.Remove(key);
+                _data.TryRemove(key, out _); // Use TryRemove for thread-safe removal
             }
         }
 

@@ -13,12 +13,12 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game
 {
     
     
     /// <summary>
-    /// >> 116 - Composite[pallet_hexalem.pallet.Game]
+    /// >> 120 - Composite[pallet_hexalem.types.game.Game]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Game : BaseType
@@ -27,7 +27,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> state
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumGameState State { get; set; }
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.EnumGameState State { get; set; }
         /// <summary>
         /// >> player_turn_and_played
         /// </summary>
@@ -39,7 +39,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <summary>
         /// >> players
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 Players { get; set; }
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 Players { get; set; }
         /// <summary>
         /// >> selection
         /// </summary>
@@ -52,6 +52,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// >> round
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U8 Round { get; set; }
+        /// <summary>
+        /// >> max_rounds
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U8 MaxRounds { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -70,6 +74,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             result.AddRange(Selection.Encode());
             result.AddRange(SelectionSize.Encode());
             result.AddRange(Round.Encode());
+            result.AddRange(MaxRounds.Encode());
             return result.ToArray();
         }
         
@@ -77,13 +82,13 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            State = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumGameState();
+            State = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.EnumGameState();
             State.Decode(byteArray, ref p);
             PlayerTurnAndPlayed = new Substrate.NetApi.Model.Types.Primitive.U8();
             PlayerTurnAndPlayed.Decode(byteArray, ref p);
             LastPlayedBlock = new Substrate.NetApi.Model.Types.Primitive.U32();
             LastPlayedBlock.Decode(byteArray, ref p);
-            Players = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4();
+            Players = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
             Players.Decode(byteArray, ref p);
             Selection = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1();
             Selection.Decode(byteArray, ref p);
@@ -91,6 +96,8 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
             SelectionSize.Decode(byteArray, ref p);
             Round = new Substrate.NetApi.Model.Types.Primitive.U8();
             Round.Decode(byteArray, ref p);
+            MaxRounds = new Substrate.NetApi.Model.Types.Primitive.U8();
+            MaxRounds.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

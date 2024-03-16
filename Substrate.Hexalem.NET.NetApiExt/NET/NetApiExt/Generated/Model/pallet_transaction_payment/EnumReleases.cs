@@ -33,7 +33,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_transaction_pay
     }
     
     /// <summary>
-    /// >> 115 - Variant[pallet_transaction_payment.Releases]
+    /// >> 119 - Variant[pallet_transaction_payment.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

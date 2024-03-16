@@ -13,38 +13,27 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime
 {
     
     
     /// <summary>
-    /// >> 127 - Composite[pallet_hexalem.pallet.TileCost]
+    /// >> 121 - Composite[hexalem_runtime.ParameterGetT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
-    public sealed class TileCost : BaseType
+    public sealed class ParameterGetT1 : BaseType
     {
-        
-        /// <summary>
-        /// >> tile_to_buy
-        /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile TileToBuy { get; set; }
-        /// <summary>
-        /// >> cost
-        /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceAmount Cost { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
         {
-            return "TileCost";
+            return "ParameterGetT1";
         }
         
         /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
-            result.AddRange(TileToBuy.Encode());
-            result.AddRange(Cost.Encode());
             return result.ToArray();
         }
         
@@ -52,10 +41,6 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            TileToBuy = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile();
-            TileToBuy.Decode(byteArray, ref p);
-            Cost = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.ResourceAmount();
-            Cost.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

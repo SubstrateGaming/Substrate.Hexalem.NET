@@ -33,118 +33,148 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         GameNotInitialized = 1,
         
         /// <summary>
-        /// >> HexBoardNotInitialized
+        /// >> DidNotJoinGame
         /// </summary>
-        HexBoardNotInitialized = 2,
+        DidNotJoinGame = 2,
         
         /// <summary>
-        /// >> GameAlreadyStarted
+        /// >> HexBoardNotInitialized
         /// </summary>
-        GameAlreadyStarted = 3,
+        HexBoardNotInitialized = 3,
+        
+        /// <summary>
+        /// >> HexBoardAlreadyInitialized
+        /// </summary>
+        HexBoardAlreadyInitialized = 4,
+        
+        /// <summary>
+        /// >> GameNotInFinishedState
+        /// </summary>
+        GameNotInFinishedState = 5,
+        
+        /// <summary>
+        /// >> CreatorNotInPlayersAtIndexZero
+        /// </summary>
+        CreatorNotInPlayersAtIndexZero = 6,
         
         /// <summary>
         /// >> GameAlreadyCreated
         /// </summary>
-        GameAlreadyCreated = 4,
+        GameAlreadyCreated = 7,
         
         /// <summary>
         /// >> InternalError
         /// </summary>
-        InternalError = 5,
+        InternalError = 8,
         
         /// <summary>
         /// >> NumberOfPlayersIsTooSmall
         /// </summary>
-        NumberOfPlayersIsTooSmall = 6,
+        NumberOfPlayersIsTooSmall = 9,
         
         /// <summary>
         /// >> NumberOfPlayersIsTooLarge
         /// </summary>
-        NumberOfPlayersIsTooLarge = 7,
+        NumberOfPlayersIsTooLarge = 10,
         
         /// <summary>
         /// >> MathOverflow
         /// </summary>
-        MathOverflow = 8,
+        MathOverflow = 11,
         
         /// <summary>
         /// >> NotEnoughResources
         /// </summary>
-        NotEnoughResources = 9,
+        NotEnoughResources = 12,
         
         /// <summary>
         /// >> NotEnoughPopulation
         /// </summary>
-        NotEnoughPopulation = 10,
+        NotEnoughPopulation = 13,
         
         /// <summary>
         /// >> BuyIndexOutOfBounds
         /// </summary>
-        BuyIndexOutOfBounds = 11,
+        BuyIndexOutOfBounds = 14,
         
         /// <summary>
         /// >> PlaceIndexOutOfBounds
         /// </summary>
-        PlaceIndexOutOfBounds = 12,
+        PlaceIndexOutOfBounds = 15,
         
         /// <summary>
         /// >> PlayerNotOnTurn
         /// </summary>
-        PlayerNotOnTurn = 13,
+        PlayerNotOnTurn = 16,
         
         /// <summary>
         /// >> PlayerNotInGame
         /// </summary>
-        PlayerNotInGame = 14,
+        PlayerNotInGame = 17,
         
         /// <summary>
         /// >> CurrentPlayerCannotForceFinishTurn
         /// </summary>
-        CurrentPlayerCannotForceFinishTurn = 15,
+        CurrentPlayerCannotForceFinishTurn = 18,
         
         /// <summary>
-        /// >> GameNotPlaying
+        /// >> GameNotInPlayingState
         /// </summary>
-        GameNotPlaying = 16,
+        GameNotInPlayingState = 19,
+        
+        /// <summary>
+        /// >> GameNotInAcceptingState
+        /// </summary>
+        GameNotInAcceptingState = 20,
         
         /// <summary>
         /// >> BadGridSize
         /// </summary>
-        BadGridSize = 17,
+        BadGridSize = 21,
         
         /// <summary>
         /// >> TileIsNotEmpty
         /// </summary>
-        TileIsNotEmpty = 18,
+        TileIsNotEmpty = 22,
         
         /// <summary>
         /// >> TileOnMaxLevel
         /// </summary>
-        TileOnMaxLevel = 19,
+        TileOnMaxLevel = 23,
         
         /// <summary>
         /// >> CannotLevelUpEmptyTile
         /// </summary>
-        CannotLevelUpEmptyTile = 20,
+        CannotLevelUpEmptyTile = 24,
         
         /// <summary>
         /// >> CannotLevelUp
         /// </summary>
-        CannotLevelUp = 21,
+        CannotLevelUp = 25,
         
         /// <summary>
         /// >> TileSurroundedByEmptyTiles
         /// </summary>
-        TileSurroundedByEmptyTiles = 22,
+        TileSurroundedByEmptyTiles = 26,
         
         /// <summary>
         /// >> BlocksToPlayLimitNotPassed
         /// </summary>
-        BlocksToPlayLimitNotPassed = 23,
+        BlocksToPlayLimitNotPassed = 27,
+        
+        /// <summary>
+        /// >> BlocksToAcceptMatchLimitNotPassed
+        /// </summary>
+        BlocksToAcceptMatchLimitNotPassed = 28,
+        
+        /// <summary>
+        /// >> ClaimCooldownNotPassed
+        /// </summary>
+        ClaimCooldownNotPassed = 29,
     }
     
     /// <summary>
-    /// >> 132 - Variant[pallet_hexalem.pallet.Error]
+    /// >> 144 - Variant[pallet_hexalem.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

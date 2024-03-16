@@ -33,7 +33,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime
     }
     
     /// <summary>
-    /// >> 80 - Variant[hexalem_runtime.OriginCaller]
+    /// >> 82 - Variant[hexalem_runtime.OriginCaller]
     /// </summary>
     public sealed class EnumOriginCaller : BaseEnumExt<OriginCaller, Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_support.dispatch.EnumRawOrigin, Substrate.NetApi.Model.Types.Base.BaseVoid>
     {

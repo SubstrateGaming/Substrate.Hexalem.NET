@@ -36,7 +36,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         public AuraStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Aura", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Aura", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Aura", "CurrentSlot"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_slots.Slot)));
         }
         
@@ -62,10 +62,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// >> Authorities
         ///  The current authority set.
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6> Authorities(CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8> Authorities(string blockhash, CancellationToken token)
         {
             string parameters = AuraStorage.AuthoritiesParams();
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>(parameters, blockhash, token);
             return result;
         }
         
@@ -95,10 +95,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// 
         ///  This will be set in `on_initialize`.
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_slots.Slot> CurrentSlot(CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_slots.Slot> CurrentSlot(string blockhash, CancellationToken token)
         {
             string parameters = AuraStorage.CurrentSlotParams();
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_slots.Slot>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_consensus_slots.Slot>(parameters, blockhash, token);
             return result;
         }
     }

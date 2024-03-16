@@ -1,6 +1,7 @@
 ﻿using Substrate.Hexalem.NET.NetApiExt.Generated.Model.primitive_types;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_runtime.multiaddress;
+using Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;

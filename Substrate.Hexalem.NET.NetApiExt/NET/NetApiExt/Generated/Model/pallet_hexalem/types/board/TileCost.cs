@@ -13,38 +13,38 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board
 {
     
     
     /// <summary>
-    /// >> 131 - Composite[pallet_hexalem.pallet.ResourceProductions]
+    /// >> 139 - Composite[pallet_hexalem.types.board.TileCost]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
-    public sealed class ResourceProductions : BaseType
+    public sealed class TileCost : BaseType
     {
         
         /// <summary>
-        /// >> produces
+        /// >> tile_to_buy
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8 Produces { get; set; }
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile TileToBuy { get; set; }
         /// <summary>
-        /// >> human_requirements
+        /// >> cost
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8 HumanRequirements { get; set; }
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource.ResourceAmount Cost { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
         {
-            return "ResourceProductions";
+            return "TileCost";
         }
         
         /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
-            result.AddRange(Produces.Encode());
-            result.AddRange(HumanRequirements.Encode());
+            result.AddRange(TileToBuy.Encode());
+            result.AddRange(Cost.Encode());
             return result.ToArray();
         }
         
@@ -52,10 +52,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Produces = new Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8();
-            Produces.Decode(byteArray, ref p);
-            HumanRequirements = new Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8();
-            HumanRequirements.Decode(byteArray, ref p);
+            TileToBuy = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile();
+            TileToBuy.Decode(byteArray, ref p);
+            Cost = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource.ResourceAmount();
+            Cost.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

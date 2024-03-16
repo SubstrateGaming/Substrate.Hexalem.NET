@@ -74,6 +74,16 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated
         /// </summary>
         public GrandpaStorage GrandpaStorage;
         
+        /// <summary>
+        /// MatchmakerModuleStorage storage calls.
+        /// </summary>
+        public MatchmakerModuleStorage MatchmakerModuleStorage;
+        
+        /// <summary>
+        /// EloModuleStorage storage calls.
+        /// </summary>
+        public EloModuleStorage EloModuleStorage;
+        
         public SubstrateClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) : 
                 base(uri, chargeType)
         {
@@ -87,6 +97,8 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated
             this.HexalemModuleStorage = new HexalemModuleStorage(this);
             this.AuraStorage = new AuraStorage(this);
             this.GrandpaStorage = new GrandpaStorage(this);
+            this.MatchmakerModuleStorage = new MatchmakerModuleStorage(this);
+            this.EloModuleStorage = new EloModuleStorage(this);
         }
     }
 }

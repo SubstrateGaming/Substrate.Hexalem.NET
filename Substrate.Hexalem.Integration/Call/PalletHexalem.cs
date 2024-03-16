@@ -1,5 +1,6 @@
 ﻿using Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet;
+using Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base;
 using Substrate.NetApi.Model.Types.Base;

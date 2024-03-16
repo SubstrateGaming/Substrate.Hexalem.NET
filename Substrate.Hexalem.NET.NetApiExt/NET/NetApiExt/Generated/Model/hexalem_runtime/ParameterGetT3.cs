@@ -13,38 +13,27 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime
 {
     
     
     /// <summary>
-    /// >> 128 - Composite[pallet_hexalem.pallet.ResourceAmount]
+    /// >> 133 - Composite[hexalem_runtime.ParameterGetT3]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
-    public sealed class ResourceAmount : BaseType
+    public sealed class ParameterGetT3 : BaseType
     {
-        
-        /// <summary>
-        /// >> resource_type
-        /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumResourceType ResourceType { get; set; }
-        /// <summary>
-        /// >> amount
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U8 Amount { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
         {
-            return "ResourceAmount";
+            return "ParameterGetT3";
         }
         
         /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
-            result.AddRange(ResourceType.Encode());
-            result.AddRange(Amount.Encode());
             return result.ToArray();
         }
         
@@ -52,10 +41,6 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ResourceType = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.EnumResourceType();
-            ResourceType.Decode(byteArray, ref p);
-            Amount = new Substrate.NetApi.Model.Types.Primitive.U8();
-            Amount.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

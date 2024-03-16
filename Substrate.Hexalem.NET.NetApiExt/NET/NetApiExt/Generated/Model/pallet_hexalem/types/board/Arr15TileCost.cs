@@ -13,21 +13,21 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board
 {
     
     
     /// <summary>
-    /// >> 126 - Array
+    /// >> 138 - Array
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Array)]
     public sealed class Arr15TileCost : BaseType
     {
         
         /// <summary>
-        /// >> Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.TileCost[]
+        /// >> Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.TileCost[]
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.TileCost[] Value { get; set; }
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.TileCost[] Value { get; set; }
         
         /// <inheritdoc/>
         public override int TypeSize
@@ -41,7 +41,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         /// <inheritdoc/>
         public override string TypeName()
         {
-            return string.Format("[{0}; {1}]", new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.TileCost().TypeName(), this.TypeSize);
+            return string.Format("[{0}; {1}]", new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.TileCost().TypeName(), this.TypeSize);
         }
         
         /// <inheritdoc/>
@@ -56,8 +56,8 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            var array = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.TileCost[TypeSize];
-            for (var i = 0; i < array.Length; i++) {var t = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.TileCost();t.Decode(byteArray, ref p);array[i] = t;};
+            var array = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.TileCost[TypeSize];
+            for (var i = 0; i < array.Length; i++) {var t = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.TileCost();t.Decode(byteArray, ref p);array[i] = t;};
             var bytesLength = p - start;
             Bytes = new byte[bytesLength];
             System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
@@ -65,7 +65,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         }
         
         /// <inheritdoc/>
-        public void Create(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.TileCost[] array)
+        public void Create(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.TileCost[] array)
         {
             Value = array;
             Bytes = Encode();
