@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Substrate.Hexalem.Game;
 using Substrate.Hexalem.Engine;
 using Substrate.Hexalem.WebAPI.Data;
 using System;
@@ -83,65 +82,6 @@ namespace Substrate.Hexalem.WebAPI.Controllers
             }
 
             return new JsonResult(Ok(inDbPlayers));
-        }
-
-        [HttpGet("Single")]
-        public async Task<ActionResult> SingleGameAsync(int playerId, string? hash = null)
-        {
-            var config = _context.Configs.FirstOrDefault();
-            if (config == null)
-            {
-                return new JsonResult(NotFound("No genesis block found!"));
-            }
-
-            var inDbPlayer = _context.Players
-                .Include(p => p.Board)
-                .Where(p => p.Id == playerId)
-                .FirstOrDefault();
-
-            if (inDbPlayer == null)
-            {
-                return new JsonResult(NotFound("No player found!"));
-            }
-
-            if (inDbPlayer.Board != null)
-            {
-                return new JsonResult(NotFound("Player has an open game!"));
-            }
-
-            var bytes = new byte[32];
-            try
-            {
-                if (!string.IsNullOrEmpty(hash) && hash.Length == 64)
-                {
-                    bytes = Convert.FromHexString(hash);
-                }
-                else
-                {
-                    _random.NextBytes(bytes);
-                }
-            }
-            catch (FormatException)
-            {
-                return BadRequest("Invalid hash format.");
-            }
-
-            var hexPlayer = new HexaPlayer(new byte[32]);
-            var game = GameManager.OffChain(hexPlayer);
-            await game.CreateGameAsync(GridSize.Medium, CancellationToken.None);
-
-            var board = new Board()
-            {
-                BoardValue = Convert.ToHexString(game.HexaGame.Value),
-                SelectionBase =  null,
-                SelectionCurrent = null,
-                Players = new List<Player> { inDbPlayer }
-            };
-
-            _context.Boards.Add(board);
-            _context.SaveChanges();
-
-            return Ok(board);
         }
 
         private uint CurrentBlockNumber(DateTime genesis)
