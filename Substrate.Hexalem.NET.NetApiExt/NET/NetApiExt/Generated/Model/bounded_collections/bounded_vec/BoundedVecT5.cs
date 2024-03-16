@@ -18,7 +18,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bo
     
     
     /// <summary>
-    /// >> 122 - Composite[bounded_collections.bounded_vec.BoundedVecT5]
+    /// >> 126 - Composite[bounded_collections.bounded_vec.BoundedVecT5]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT5 : BaseType
@@ -27,7 +27,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bo
         /// <summary>
         /// >> value
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile> Value { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.EnumRewards> Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bo
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Hexalem.NET.NetApiExt.Generated.Model.hexalem_runtime.HexalemTile>();
+            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.EnumRewards>();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

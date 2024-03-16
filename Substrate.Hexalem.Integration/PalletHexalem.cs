@@ -1,6 +1,6 @@
 ﻿using Serilog;
 using Substrate.Hexalem.Integration.Model;
-using Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet;
+using Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Storage;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base;
@@ -28,9 +28,35 @@ namespace Substrate.Integration
         /// Get game
         /// </summary>
         /// <param name="gameId"></param>
+        /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<GameSharp?> GetGameAsync(byte[] gameId, CancellationToken token)
+        public async Task<MatchmakingStateSharp?> GetMatchmakingStateAsync(string playerAddress, string? blockHash, CancellationToken token)
+        {
+            if (!IsConnected)
+            {
+                Log.Warning("Currently not connected to the network!");
+                return null;
+            }
+
+            var key = new AccountId32();
+            key.Create(Utils.GetPublicKeyFrom(playerAddress));
+
+            var result = await SubstrateClient.HexalemModuleStorage.MatchmakingStateStorage(key, blockHash, token);
+
+            if (result == null) return null;
+
+            return new MatchmakingStateSharp(result);
+        }
+
+        /// <summary>
+        /// Get game
+        /// </summary>
+        /// <param name="gameId"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<GameSharp?> GetGameAsync(byte[] gameId, string? blockHash, CancellationToken token)
         {
             if (!IsConnected)
             {
@@ -41,7 +67,7 @@ namespace Substrate.Integration
             var key = new Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8();
             key.Create(gameId);
 
-            var result = await SubstrateClient.HexalemModuleStorage.GameStorage(key, token);
+            var result = await SubstrateClient.HexalemModuleStorage.GameStorage(key, blockHash, token);
 
             if (result == null) return null;
 
@@ -52,14 +78,21 @@ namespace Substrate.Integration
         /// Get board
         /// </summary>
         /// <param name="playerAddress"></param>
+        /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<BoardSharp?> GetBoardAsync(string playerAddress, CancellationToken token)
+        public async Task<BoardSharp?> GetBoardAsync(string playerAddress, string? blockHash, CancellationToken token)
         {
+            if (!IsConnected)
+            {
+                Log.Warning("Currently not connected to the network!");
+                return null;
+            }
+
             var key = new AccountId32();
             key.Create(Utils.GetPublicKeyFrom(playerAddress));
 
-            var result = await SubstrateClient.HexalemModuleStorage.HexBoardStorage(key, token);
+            var result = await SubstrateClient.HexalemModuleStorage.HexBoardStorage(key, blockHash, token);
 
             if (result == null) return null;
 
@@ -84,6 +117,22 @@ namespace Substrate.Integration
             var extrinsicType = $"Hexalem.CreateGame";
 
             var extrinsic = HexalemModuleCalls.CreateGame(new BaseVec<AccountId32>(players.Select(p => p.ToAccountId32()).ToArray()), new U8(gridSize));
+
+            return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
+        }
+
+        /// <summary>
+        /// Queue
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<string?> QueueAsync(Account account, int concurrentTasks, CancellationToken token)
+        {
+            var extrinsicType = $"Hexalem.Queue";
+
+            var extrinsic = HexalemModuleCalls.Queue();
 
             return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
         }
@@ -143,6 +192,38 @@ namespace Substrate.Integration
             var extrinsicType = $"Hexalem.FinishTurn";
 
             var extrinsic = HexalemModuleCalls.FinishTurn();
+
+            return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
+        }
+
+        /// <summary>
+        /// Claim rewards
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<string?> ClaimAsync(Account account, int concurrentTasks, CancellationToken token)
+        {
+            var extrinsicType = $"Hexalem.ClaimRewards";
+
+            var extrinsic = HexalemModuleCalls.ClaimRewards();
+
+            return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
+        }
+
+        /// <summary>
+        /// Accept match
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<string?> AcceptAsync(Account account, int concurrentTasks, CancellationToken token)
+        {
+            var extrinsicType = $"Hexalem.AcceptMatch";
+
+            var extrinsic = HexalemModuleCalls.AcceptMatch();
 
             return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
         }

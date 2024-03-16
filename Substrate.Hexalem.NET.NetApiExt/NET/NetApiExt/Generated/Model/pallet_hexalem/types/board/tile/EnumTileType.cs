@@ -11,56 +11,61 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.tile
 {
     
     
     /// <summary>
-    /// >> ResourceType
+    /// >> TileType
     /// </summary>
-    public enum ResourceType
+    public enum TileType
     {
         
         /// <summary>
-        /// >> Mana
+        /// >> Empty
         /// </summary>
-        Mana = 0,
+        Empty = 0,
         
         /// <summary>
-        /// >> Human
+        /// >> Home
         /// </summary>
-        Human = 1,
+        Home = 1,
+        
+        /// <summary>
+        /// >> Grass
+        /// </summary>
+        Grass = 2,
         
         /// <summary>
         /// >> Water
         /// </summary>
-        Water = 2,
+        Water = 3,
         
         /// <summary>
-        /// >> Food
+        /// >> Mountain
         /// </summary>
-        Food = 3,
+        Mountain = 4,
         
         /// <summary>
-        /// >> Wood
+        /// >> Tree
         /// </summary>
-        Wood = 4,
+        Tree = 5,
         
         /// <summary>
-        /// >> Stone
+        /// >> Desert
         /// </summary>
-        Stone = 5,
+        Desert = 6,
         
         /// <summary>
-        /// >> Gold
+        /// >> Cave
         /// </summary>
-        Gold = 6,
+        Cave = 7,
     }
     
     /// <summary>
-    /// >> 129 - Variant[pallet_hexalem.pallet.ResourceType]
+    /// >> 42 - Variant[pallet_hexalem.types.board.tile.TileType]
     /// </summary>
-    public sealed class EnumResourceType : BaseEnum<ResourceType>
+    public sealed class EnumTileType : BaseEnum<TileType>
     {
     }
 }

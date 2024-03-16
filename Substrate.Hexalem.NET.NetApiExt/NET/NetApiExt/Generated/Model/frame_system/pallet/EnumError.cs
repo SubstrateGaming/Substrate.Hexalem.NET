@@ -64,7 +64,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_system.pallet
     }
     
     /// <summary>
-    /// >> 74 - Variant[frame_system.pallet.Error]
+    /// >> 76 - Variant[frame_system.pallet.Error]
     /// Error for the System pallet
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

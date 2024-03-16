@@ -50,16 +50,17 @@ namespace Substrate.Integration
         /// <summary>
         /// Get the current block number.
         /// </summary>
+        /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<uint?> GetBlocknumberAsync(CancellationToken token)
+        public async Task<uint?> GetBlocknumberAsync(string blockHash, CancellationToken token)
         {
             if (!IsConnected)
             {
                 Log.Warning("Currently not connected to the network!");
                 return null;
             }
-            var result = await SubstrateClient.SystemStorage.Number(token);
+            var result = await SubstrateClient.SystemStorage.Number(blockHash, token);
             if (result == null)
             {
                 return null;
@@ -71,18 +72,20 @@ namespace Substrate.Integration
         /// <summary>
         /// Get owner account informations.
         /// </summary>
+        /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<AccountInfoSharp> GetAccountAsync(CancellationToken token)
-            => await GetAccountAsync(Account, token);
+        public async Task<AccountInfoSharp> GetAccountAsync(string blockHash, CancellationToken token)
+            => await GetAccountAsync(Account, blockHash, token);
 
         /// <summary>
         /// Get account informations.
         /// </summary>
-        /// <param name="account32"></param>
+        /// <param name="key"></param>
+        /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        public async Task<AccountInfoSharp> GetAccountAsync(Account key, CancellationToken token)
+        public async Task<AccountInfoSharp> GetAccountAsync(Account key, string blockHash, CancellationToken token)
         {
             if (!IsConnected)
             {
@@ -96,7 +99,7 @@ namespace Substrate.Integration
                 return null;
             }
 
-            var result = await SubstrateClient.SystemStorage.Account(key.ToAccountId32(), token);
+            var result = await SubstrateClient.SystemStorage.Account(key.ToAccountId32(), blockHash, token);
             if (result == null)
             {
                 return null;

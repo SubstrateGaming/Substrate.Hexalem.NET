@@ -13,43 +13,38 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource
 {
     
     
     /// <summary>
-    /// >> 120 - Composite[pallet_hexalem.pallet.HexBoard]
+    /// >> 40 - Composite[pallet_hexalem.types.board.resource.Move]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
-    public sealed class HexBoard : BaseType
+    public sealed class Move : BaseType
     {
         
         /// <summary>
-        /// >> resources
+        /// >> place_index
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8 Resources { get; set; }
+        public Substrate.NetApi.Model.Types.Primitive.U8 PlaceIndex { get; set; }
         /// <summary>
-        /// >> hex_grid
+        /// >> buy_index
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5 HexGrid { get; set; }
-        /// <summary>
-        /// >> game_id
-        /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 GameId { get; set; }
+        public Substrate.NetApi.Model.Types.Primitive.U8 BuyIndex { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
         {
-            return "HexBoard";
+            return "Move";
         }
         
         /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
-            result.AddRange(Resources.Encode());
-            result.AddRange(HexGrid.Encode());
-            result.AddRange(GameId.Encode());
+            result.AddRange(PlaceIndex.Encode());
+            result.AddRange(BuyIndex.Encode());
             return result.ToArray();
         }
         
@@ -57,12 +52,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Resources = new Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr7U8();
-            Resources.Decode(byteArray, ref p);
-            HexGrid = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5();
-            HexGrid.Decode(byteArray, ref p);
-            GameId = new Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8();
-            GameId.Decode(byteArray, ref p);
+            PlaceIndex = new Substrate.NetApi.Model.Types.Primitive.U8();
+            PlaceIndex.Decode(byteArray, ref p);
+            BuyIndex = new Substrate.NetApi.Model.Types.Primitive.U8();
+            BuyIndex.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

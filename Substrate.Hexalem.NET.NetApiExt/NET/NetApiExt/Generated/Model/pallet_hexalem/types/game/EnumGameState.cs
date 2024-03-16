@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
+namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game
 {
     
     
@@ -22,9 +22,9 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
     {
         
         /// <summary>
-        /// >> Matchmaking
+        /// >> Accepting
         /// </summary>
-        Matchmaking = 0,
+        Accepting = 0,
         
         /// <summary>
         /// >> Playing
@@ -38,9 +38,9 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
     }
     
     /// <summary>
-    /// >> 117 - Variant[pallet_hexalem.pallet.GameState]
+    /// >> 123 - Variant[pallet_hexalem.types.game.GameState]
     /// </summary>
-    public sealed class EnumGameState : BaseEnumExt<GameState, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>>
+    public sealed class EnumGameState : BaseEnumExt<GameState, Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4, BaseVoid, Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>
     {
     }
 }

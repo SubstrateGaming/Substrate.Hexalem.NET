@@ -18,7 +18,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base
     
     
     /// <summary>
-    /// >> 125 - Array
+    /// >> 137 - Array
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Array)]
     public sealed class Arr16U8 : BaseType

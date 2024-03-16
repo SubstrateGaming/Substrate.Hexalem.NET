@@ -23,7 +23,7 @@ namespace Substrate.Integration.Helper
         {
             var result = new HexaGame(game.GameId, new List<(HexaPlayer, HexaBoard)>())
             {
-                HexBoardState = (HexBoardState)game.State,
+                HexBoardState = (HexBoardState)game.State + 1,
                 HexBoardRound = game.Round,
                 PlayerTurn = game.PlayerTurn,
                 SelectBase = game.SelectionSize,

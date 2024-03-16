@@ -29,6 +29,24 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         create_game = 0,
         
         /// <summary>
+        /// >> queue
+        /// See [`Pallet::queue`].
+        /// </summary>
+        queue = 100,
+        
+        /// <summary>
+        /// >> accept_match
+        /// See [`Pallet::accept_match`].
+        /// </summary>
+        accept_match = 101,
+        
+        /// <summary>
+        /// >> force_accept_match
+        /// See [`Pallet::force_accept_match`].
+        /// </summary>
+        force_accept_match = 102,
+        
+        /// <summary>
         /// >> play
         /// See [`Pallet::play`].
         /// </summary>
@@ -53,10 +71,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
         force_finish_turn = 4,
         
         /// <summary>
-        /// >> receive_reward
-        /// See [`Pallet::receive_reward`].
+        /// >> claim_rewards
+        /// See [`Pallet::claim_rewards`].
         /// </summary>
-        receive_reward = 5,
+        claim_rewards = 5,
         
         /// <summary>
         /// >> root_delete_game
@@ -66,10 +84,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet
     }
     
     /// <summary>
-    /// >> 88 - Variant[pallet_hexalem.pallet.Call]
+    /// >> 90 - Variant[pallet_hexalem.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Move, Substrate.NetApi.Model.Types.Primitive.U8, BaseVoid, Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8, BaseVoid, Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource.Move, Substrate.NetApi.Model.Types.Primitive.U8, BaseVoid, Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8, BaseVoid, Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
     {
     }
 }

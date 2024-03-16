@@ -18,7 +18,7 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Model.frame_support.dispatch
     
     
     /// <summary>
-    /// >> 66 - Composite[frame_support.dispatch.PerDispatchClassT3]
+    /// >> 69 - Composite[frame_support.dispatch.PerDispatchClassT3]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PerDispatchClassT3 : BaseType

@@ -36,12 +36,45 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         public HexalemModuleStorage(SubstrateClientExt client)
         {
             this._client = client;
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("HexalemModule", "StoreTest"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("HexalemModule", "GameStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.Game)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("HexalemModule", "MatchmakingStateStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.EnumMatchmakingState)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("HexalemModule", "HexBoardStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.HexBoard)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("HexalemModule", "TargetGoalStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8)));
+        }
+        
+        /// <summary>
+        /// >> StoreTestParams
+        /// </summary>
+        public static string StoreTestParams(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 key)
+        {
+            return RequestGenerator.GetStorage("HexalemModule", "StoreTest", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> StoreTestDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string StoreTestDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> StoreTest
+        /// </summary>
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1> StoreTest(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 key, string blockhash, CancellationToken token)
+        {
+            string parameters = HexalemModuleStorage.StoreTestParams(key);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1>(parameters, blockhash, token);
+            return result;
         }
         
         /// <summary>
@@ -66,10 +99,39 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> GameStorage
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game> GameStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 key, CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.Game> GameStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8 key, string blockhash, CancellationToken token)
         {
             string parameters = HexalemModuleStorage.GameStorageParams(key);
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Game>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.game.Game>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> MatchmakingStateStorageParams
+        /// </summary>
+        public static string MatchmakingStateStorageParams(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        {
+            return RequestGenerator.GetStorage("HexalemModule", "MatchmakingStateStorage", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> MatchmakingStateStorageDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string MatchmakingStateStorageDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> MatchmakingStateStorage
+        /// </summary>
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.EnumMatchmakingState> MatchmakingStateStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = HexalemModuleStorage.MatchmakingStateStorageParams(key);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.EnumMatchmakingState>(parameters, blockhash, token);
             return result;
         }
         
@@ -95,10 +157,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> HexBoardStorage
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard> HexBoardStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.HexBoard> HexBoardStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = HexalemModuleStorage.HexBoardStorageParams(key);
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.HexBoard>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.HexBoard>(parameters, blockhash, token);
             return result;
         }
         
@@ -124,10 +186,10 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> TargetGoalStorage
         /// </summary>
-        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8> TargetGoalStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8> TargetGoalStorage(Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = HexalemModuleStorage.TargetGoalStorageParams(key);
-            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base.Arr16U8>(parameters, blockhash, token);
             return result;
         }
     }
@@ -151,10 +213,40 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
         
         /// <summary>
+        /// >> queue
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method Queue()
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            return new Method(21, "HexalemModule", 100, "queue", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> accept_match
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method AcceptMatch()
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            return new Method(21, "HexalemModule", 101, "accept_match", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> force_accept_match
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ForceAcceptMatch()
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            return new Method(21, "HexalemModule", 102, "force_accept_match", byteArray.ToArray());
+        }
+        
+        /// <summary>
         /// >> play
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Play(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Move move_played)
+        public static Method Play(Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource.Move move_played)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(move_played.Encode());
@@ -194,13 +286,13 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
         
         /// <summary>
-        /// >> receive_reward
+        /// >> claim_rewards
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ReceiveReward()
+        public static Method ClaimRewards()
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            return new Method(21, "HexalemModule", 5, "receive_reward", byteArray.ToArray());
+            return new Method(21, "HexalemModule", 5, "claim_rewards", byteArray.ToArray());
         }
         
         /// <summary>
@@ -262,12 +354,32 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
         
         /// <summary>
+        /// >> BlocksToAcceptMatchLimit
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U8 BlocksToAcceptMatchLimit()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U8();
+            result.Create("0x05");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> BlocksToClaimCooldown
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U8 BlocksToClaimCooldown()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U8();
+            result.Create("0x0A");
+            return result;
+        }
+        
+        /// <summary>
         /// >> MaxHexGridSize
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxHexGridSize()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
-            result.Create("0x19000000");
+            result.Create("0x31000000");
             return result;
         }
         
@@ -282,11 +394,21 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         }
         
         /// <summary>
+        /// >> MatchmakingPeriod
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 MatchmakingPeriod()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
+            result.Create("0x0A000000");
+            return result;
+        }
+        
+        /// <summary>
         /// >> TileCosts
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Arr15TileCost TileCosts()
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.Arr15TileCost TileCosts()
         {
-            var result = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Arr15TileCost();
+            var result = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.Arr15TileCost();
             result.Create("0x1000011000011000011800011800011800012000012000012000012800012800012800013000013" +
                     "80001380001");
             return result;
@@ -295,9 +417,9 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// <summary>
         /// >> TileResourceProductions
         /// </summary>
-        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Arr8ResourceProductions TileResourceProductions()
+        public Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource.Arr8ResourceProductions TileResourceProductions()
         {
-            var result = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.pallet.Arr8ResourceProductions();
+            var result = new Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource.Arr8ResourceProductions();
             result.Create("0x0000000000000000000000000000000100000000000000000000000000000002000000000000000" +
                     "00000000002000000000000000000000000000000000400000000000004000000000103000000000" +
                     "00002000000000000000000000000000000000000000000020100000000000203");
@@ -392,14 +514,29 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         GameNotInitialized,
         
         /// <summary>
+        /// >> DidNotJoinGame
+        /// </summary>
+        DidNotJoinGame,
+        
+        /// <summary>
         /// >> HexBoardNotInitialized
         /// </summary>
         HexBoardNotInitialized,
         
         /// <summary>
-        /// >> GameAlreadyStarted
+        /// >> HexBoardAlreadyInitialized
         /// </summary>
-        GameAlreadyStarted,
+        HexBoardAlreadyInitialized,
+        
+        /// <summary>
+        /// >> GameNotInFinishedState
+        /// </summary>
+        GameNotInFinishedState,
+        
+        /// <summary>
+        /// >> CreatorNotInPlayersAtIndexZero
+        /// </summary>
+        CreatorNotInPlayersAtIndexZero,
         
         /// <summary>
         /// >> GameAlreadyCreated
@@ -462,9 +599,14 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         CurrentPlayerCannotForceFinishTurn,
         
         /// <summary>
-        /// >> GameNotPlaying
+        /// >> GameNotInPlayingState
         /// </summary>
-        GameNotPlaying,
+        GameNotInPlayingState,
+        
+        /// <summary>
+        /// >> GameNotInAcceptingState
+        /// </summary>
+        GameNotInAcceptingState,
         
         /// <summary>
         /// >> BadGridSize
@@ -500,5 +642,15 @@ namespace Substrate.Hexalem.NET.NetApiExt.Generated.Storage
         /// >> BlocksToPlayLimitNotPassed
         /// </summary>
         BlocksToPlayLimitNotPassed,
+        
+        /// <summary>
+        /// >> BlocksToAcceptMatchLimitNotPassed
+        /// </summary>
+        BlocksToAcceptMatchLimitNotPassed,
+        
+        /// <summary>
+        /// >> ClaimCooldownNotPassed
+        /// </summary>
+        ClaimCooldownNotPassed,
     }
 }
