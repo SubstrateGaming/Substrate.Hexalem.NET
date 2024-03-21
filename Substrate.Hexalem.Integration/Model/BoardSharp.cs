@@ -18,8 +18,15 @@ namespace Substrate.Hexalem.Integration.Model
             Resources = result.Resources.Value.Select(x => (byte)x).ToArray();
 
             HexGrid = result.HexGrid.Value.Value.Select(x => new TileSharp(x)).ToArray();
+
+            GameId = result.GameId.Value.Select(p => p.Value).ToArray();
         }
         
+        /// <summary>
+        /// The game identifier
+        /// </summary>
+        public byte[] GameId { get; private set; }
+
         /// <summary>
         /// Resources
         /// </summary>

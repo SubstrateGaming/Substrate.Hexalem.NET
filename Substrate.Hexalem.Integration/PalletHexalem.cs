@@ -1,4 +1,5 @@
 ﻿using Serilog;
+using Substrate.Hexalem.Integration.Helper;
 using Substrate.Hexalem.Integration.Model;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.board.resource;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Model.sp_core.crypto;
@@ -22,7 +23,27 @@ namespace Substrate.Integration
     /// </summary>
     public partial class SubstrateNetwork : BaseClient
     {
+        private HexalemModuleConstants _hexalemConstants;
+
+        /// <summary>
+        /// Get Hexalem constant from NetApiExt
+        /// </summary>
+        public HexalemModuleConstants HexalemConstants
+        {
+            get
+            {
+                if(_hexalemConstants == null)
+                {
+                    _hexalemConstants = new HexalemModuleConstants();
+                }
+
+                return _hexalemConstants;
+            }
+        }
         #region storage
+
+        public Task<MatchmakingStateSharp?> GetMatchmakingStateAsync(Account player, string? blockHash, CancellationToken token)
+            => GetMatchmakingStateAsync(player.ToString(), blockHash, token);
 
         /// <summary>
         /// Get game
@@ -31,6 +52,7 @@ namespace Substrate.Integration
         /// <param name="blockHash"></param>
         /// <param name="token"></param>
         /// <returns></returns>
+
         public async Task<MatchmakingStateSharp?> GetMatchmakingStateAsync(string playerAddress, string? blockHash, CancellationToken token)
         {
             if (!IsConnected)
@@ -40,11 +62,16 @@ namespace Substrate.Integration
             }
 
             var key = new AccountId32();
-            key.Create(Utils.GetPublicKeyFrom(playerAddress));
+            key.Create(Utils.GetPublicKeyFrom(playerAddress));  
 
             var result = await SubstrateClient.HexalemModuleStorage.MatchmakingStateStorage(key, blockHash, token);
 
-            if (result == null) return null;
+            if (result == null)
+            {
+                // Get default value
+                result = new Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types.EnumMatchmakingState();
+                result.Create(HexalemModuleStorage.MatchmakingStateStorageDefault());
+            }
 
             return new MatchmakingStateSharp(result);
         }
@@ -64,7 +91,7 @@ namespace Substrate.Integration
                 return null;
             }
 
-            var key = new Hexalem.NET.NetApiExt.Generated.Types.Base.Arr32U8();
+            var key = new Arr32U8();
             key.Create(gameId);
 
             var result = await SubstrateClient.HexalemModuleStorage.GameStorage(key, blockHash, token);
@@ -99,6 +126,108 @@ namespace Substrate.Integration
             return new BoardSharp(result);
         }
 
+        /// <summary>
+        /// Get the elo rating of a player
+        /// </summary>
+        /// <param name="playerAddress"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<uint> GetRatingStorageAsync(string playerAddress, CancellationToken token)
+        {
+            var account = new AccountId32();
+            account.Create(Utils.GetPublicKeyFrom(playerAddress));
+
+            Log.Debug($"Fetching elo rating for address {playerAddress} | account bytes = {account.Bytes}");
+            var result = await SubstrateClient.EloModuleStorage.RatingStorage(account, null, token);
+
+            if (result == null)
+            {
+                result = new U16();
+                result.Create(EloModuleStorage.RatingStorageDefault());
+            }
+
+            Log.Debug($"Elo rating fetched for address {playerAddress} | value = {result}");
+            return result;
+        }
+
+        /// <summary>
+        /// Return player bracket (need to be changed)
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<uint> GetPlayerBracketAsync(Account player, CancellationToken token)
+        {
+            return 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bracketIndex"></param>
+        /// <param name="bracketKey"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<string?> GetPlayerBracketIndexAsync(byte bracketIndex, uint bracketKey, CancellationToken token)
+        {
+            var tuple = new BaseTuple<U8, U16>(new U8(bracketIndex), new U16((ushort)bracketKey));
+
+            var result = await SubstrateClient.MatchmakerModuleStorage.BracketIndexKeyMap(tuple, null, token);
+
+            if (result == null)
+            {
+                Log.Warning("No player for bracket index = {bracketIndex} and bracket key {bracketKey}", bracketIndex, bracketKey);
+                return null;
+            }
+
+            return Utils.GetAddressFrom(result.Value.Bytes);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bracketIndex"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<(uint, uint)> GetBracketIndicesAsync(byte bracketIndex, CancellationToken token)
+        {
+            var result = await SubstrateClient.MatchmakerModuleStorage.BracketIndices(new U8(bracketIndex), null, token);
+
+            return ((uint)result.Value[0].As<U16>().Value, (uint)result.Value[1].As<U16>().Value);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="playerAddress"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<bool> IsPlayerInMatchmakingAsync(Account player, CancellationToken token)
+        {
+            var result = await SubstrateClient.MatchmakerModuleStorage.KeyPresentMap(player.ToAccountId32(), null, token);
+
+            if (result == null)
+            {
+                result = new Bool();
+                result.Create(MatchmakerModuleStorage.KeyPresentMapDefault());
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Return the number of brackets
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<uint> GetBracketsCountAsync(CancellationToken token)
+        {
+            var result = await SubstrateClient.MatchmakerModuleStorage.BracketsCount(null, token);
+
+            if (result == null) return uint.MinValue;
+
+            return (uint)result.Value;
+        }
         #endregion storage
 
         #region call
@@ -229,6 +358,22 @@ namespace Substrate.Integration
         }
 
         /// <summary>
+        /// Force the start of the match
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="concurrentTasks"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public async Task<string?> ForceAcceptMatch(Account account, int concurrentTasks, CancellationToken token)
+        {
+            var extrinsicType = $"Hexalem.ForceAcceptMatch";
+
+            var extrinsic = HexalemModuleCalls.ForceAcceptMatch();
+
+            return await GenericExtrinsicAsync(account, extrinsicType, extrinsic, concurrentTasks, token);
+        }
+
+        /// <summary>
         /// Root delete game, needs to be called by Sudo.
         /// </summary>
         /// <param name="account">Sudo account</param>
@@ -251,5 +396,17 @@ namespace Substrate.Integration
         }
 
         #endregion call
+
+        #region Constants
+
+        /// <summary>
+        /// Return nb max block to accept the match
+        /// </summary>
+        /// <returns></returns>
+        public uint BlocksToAcceptMatchLimit()
+        {
+            return (uint)HexalemConstants.BlocksToAcceptMatchLimit().Value;
+        }
+        #endregion
     }
 }
