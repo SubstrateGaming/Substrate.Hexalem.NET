@@ -193,6 +193,12 @@ namespace Substrate.Integration
         {
             var result = await SubstrateClient.MatchmakerModuleStorage.BracketIndices(new U8(bracketIndex), null, token);
 
+            if (result == null)
+            {
+                result = new BaseTuple<U16, U16>();
+                result.Create(MatchmakerModuleStorage.BracketIndicesDefault());
+            }
+
             return ((uint)result.Value[0].As<U16>().Value, (uint)result.Value[1].As<U16>().Value);
         }
 
