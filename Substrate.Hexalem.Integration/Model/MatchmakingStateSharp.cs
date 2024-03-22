@@ -1,5 +1,6 @@
 ﻿using Substrate.Hexalem.NET.NetApiExt.Generated.Model.pallet_hexalem.types;
 using Substrate.Hexalem.NET.NetApiExt.Generated.Types.Base;
+using Substrate.NetApi.Model.Types;
 using System.Linq;
 
 namespace Substrate.Hexalem.Integration.Model
@@ -32,5 +33,10 @@ namespace Substrate.Hexalem.Integration.Model
         /// Game Id
         /// </summary>
         public byte[]? GameId { get; private set; }
+
+        /// <summary>
+        /// Return true if the game is created
+        /// </summary>
+        public bool IsGameFound => GameId != null;
     }
 }
